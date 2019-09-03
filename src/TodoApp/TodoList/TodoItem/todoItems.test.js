@@ -1,9 +1,9 @@
 import React from "react";
+import { Provider } from "mobx-react";
 import { render, fireEvent } from "@testing-library/react";
 import TodoItem from ".";
-import Todo from "../../../Stores/Model/Todo";
 import TodoInput from "../../TodoInput";
-import { Provider } from "mobx-react";
+import Todo from "../../../Stores/Model/Todo";
 import TodoStore from "../../../Stores/Model/TodoStore";
 describe("Todoitems testsuit", () => {
   it("sholud test text strike-off with checkbox tick", () => {
@@ -25,7 +25,7 @@ describe("Todoitems testsuit", () => {
       <TodoItem
         todo={todo}
         todoStore={todoStore}
-        onTodoItemChange={todoItemChange}
+        onTodoItemEdit={todoItemChange}
       />
     );
     const editedText = getByText(todo.todoDescription);
@@ -36,7 +36,7 @@ describe("Todoitems testsuit", () => {
         <TodoInput
           editTodo={true}
           description={todo.todoDescription}
-          onTodoInputChange={todoItemChange}
+          onTodoInput={todoItemChange}
         />
       </Provider>
     );
