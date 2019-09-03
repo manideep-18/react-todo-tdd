@@ -1,7 +1,7 @@
 import React, { Component } from "react";
+import { inject, observer } from "mobx-react";
 import { TodoAppBg } from "./styledComponents";
 import TodoInput from "./TodoInput";
-import { inject, observer } from "mobx-react";
 import TodoList from "./TodoList";
 import TodoButtonComponent from "./TodoButtonComponent";
 @inject("todoStore", "todo")
@@ -10,17 +10,17 @@ class TodoApp extends Component {
   todo;
   constructor(props) {
     super(props);
-    this.state = { editTodo: false };
+    this.state = { edit: false };
   }
-  todoItemEdit = (editCurrentTodoStatus, todo) => {
-    this.setState({ editTodo: editCurrentTodoStatus });
+  handleTodoItemEdit = (editTodoStatus, todo) => {
+    this.setState({ edit: editTodoStatus });
     this.todo = todo;
   };
-  addTodo = description => {
+  handleTodoInputChange = description => {
     this.props.todoStore.addTodo(description);
   };
   handleEditChange = () => {
-    this.setState({ editTodo: !this.state.editTodo });
+    this.setState({ edit: !this.state.editTodo });
   };
   handleClearCompleted = () => {
     this.props.todoStore.clearCompleted();
@@ -28,20 +28,20 @@ class TodoApp extends Component {
   render() {
     return (
       <TodoAppBg>
-        <TodoInput onTodoInputChange={this.addTodo} />
-        {this.state.editTodo ? (
+        <TodoInput onTodoInput={this.handleTodoInputChange} />
+        {this.state.edit ? (
           <>
             <TodoInput
-              edit={this.state.editTodo}
+              edit={this.state.edit}
               todo={this.todo}
-              onTodoInputChange={this.addTodo}
-              updateEdit={this.handleEditChange}
+              onTodoInput={this.handleTodoInputChange}
+              onTodoEdit={this.handleEditChange}
             />
           </>
         ) : (
           ""
         )}
-        <TodoList onTodoItemChange={this.todoItemEdit} />
+        <TodoList onTodoItemEdit={this.handleTodoItemEdit} />
         <TodoButtonComponent onClearCompleted={this.handleClearCompleted} />
       </TodoAppBg>
     );

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { observer, inject } from "mobx-react";
 import {
   TodoItemTextStrikeoff,
   TodoItemBg,
@@ -7,7 +8,6 @@ import {
   CheckBox,
   TodoEachItemBg
 } from "./styledComponents";
-import { observer, inject } from "mobx-react";
 inject("todo");
 @observer
 class TodoItem extends Component {
@@ -20,7 +20,7 @@ class TodoItem extends Component {
     this.setState({ click: !this.state.click });
   };
   handleDoubleClick = () => {
-    this.props.onTodoItemChange(true, this.props.todo);
+    this.props.onTodoItemEdit(true, this.props.todo);
   };
   handleClick = () => {
     if (window.confirm("Are you sure"))

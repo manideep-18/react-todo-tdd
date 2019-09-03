@@ -25,7 +25,7 @@ describe("Todoitems testsuit", () => {
       <TodoItem
         todo={todo}
         todoStore={todoStore}
-        onTodoItemChange={todoItemChange}
+        onTodoItemEdit={todoItemChange}
       />
     );
     const editedText = getByText(todo.todoDescription);
@@ -36,7 +36,7 @@ describe("Todoitems testsuit", () => {
         <TodoInput
           editTodo={true}
           description={todo.todoDescription}
-          onTodoInputChange={todoItemChange}
+          onTodoInput={todoItemChange}
         />
       </Provider>
     );

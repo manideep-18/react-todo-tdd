@@ -3,4 +3,6 @@ export const TodoInputBg = styled.div`
   display: flex;
   justify-content: center;
 `;
-export const TodoInputBox = styled.input``;
+export const TodoInputBox = styled.input`
+  background-color: none;
+`;

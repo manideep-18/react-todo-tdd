@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { TodoInputBg, TodoInputBox } from "./styledComponents";
 import { inject } from "mobx-react";
+import { TodoInputBg, TodoInputBox } from "./styledComponents";
 @inject("todoStore", "todo")
 class TodoInput extends Component {
   edit = true;
@@ -17,13 +17,13 @@ class TodoInput extends Component {
       if (str !== "") {
         if (this.props.edit) {
           this.props.todo.setTodoDescription(this.state.value);
-          this.props.updateEdit();
-        } else this.props.onTodoInputChange(this.state.value);
+          this.props.onTodoEdit();
+        } else this.props.onTodoInput(this.state.value);
         this.setState({ value: "" });
       }
       if (this.props.edit && str === "") {
         this.props.todoStore.deleteTodo(this.props.todo);
-        this.props.updateEdit();
+        this.props.onTodoEdit();
       }
     }
   };
@@ -32,7 +32,6 @@ class TodoInput extends Component {
     this.setState({ value: this.props.todo.todoDescription });
   };
   render() {
-    // console.log(this.state.value);
     return (
       <TodoInputBg>
         {this.props.edit && this.edit ? this.setValue() : ""}
