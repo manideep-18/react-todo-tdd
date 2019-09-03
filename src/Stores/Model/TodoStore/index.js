@@ -11,12 +11,12 @@ class TodoStore {
   };
   @action deleteTodo = todo => {
     this.todos = this.todos.filter(
-      todoEach => todoEach.todoDescription !== todo.todoDescription
+      eachTodo => eachTodo.todoDescription !== todo.todoDescription
     );
   };
   @action clearCompleted = () => {
     this.todos = this.todos.filter(
-      todoEach => todoEach.todoIsCompleted === false
+      eachTodo => eachTodo.todoIsCompleted === false
     );
   };
   @action setApplyFilterType = filterType => {
@@ -24,7 +24,7 @@ class TodoStore {
   };
   @computed get todosItemsLeft() {
     const todosItemsLeftArray = this.todos.filter(
-      todoEach => todoEach.todoIsCompleted === false
+      eachTodo => eachTodo.todoIsCompleted === false
     );
     return todosItemsLeftArray.length;
   }
@@ -32,11 +32,11 @@ class TodoStore {
     var todosArray = [];
     if (this.applyFilterType === "Active") {
       todosArray = this.todos.filter(
-        todoEach => todoEach.todoIsCompleted === false
+        eachTodo => eachTodo.todoIsCompleted === false
       );
     } else if (this.applyFilterType === "Completed") {
       todosArray = this.todos.filter(
-        todoEach => todoEach.todoIsCompleted === true
+        eachTodo => eachTodo.todoIsCompleted === true
       );
     } else {
       todosArray = this.todos;
