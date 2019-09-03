@@ -3,7 +3,7 @@ import React, { Component } from "react";
 
 import { TodoInputBg, TodoInputBox } from "./styledComponents";
 
-@inject("todoStore", "todo")
+@inject("todoStore")
 class TodoInput extends Component {
   edit = true;
   constructor(props) {
@@ -44,7 +44,6 @@ class TodoInput extends Component {
         <TodoInputBox
           value={this.state.value}
           type="text"
-          data-testid="mani"
           placeholder="what needs to be done..."
           onChange={this.handleChange}
           onKeyDown={this.handleKeyDown}

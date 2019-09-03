@@ -16,6 +16,7 @@ describe("TodoButton testsuit", () => {
     const todoButton = getByText("All");
     expect(todoButton).toBeDefined();
   });
+
   it("should test StyledTodoButton handleClick function ", () => {
     const todoStore = new TodoStore();
     todoStore.setApplyFilterType = jest.fn();

@@ -2,22 +2,20 @@ import { Provider } from "mobx-react";
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 
-import Todo from "../../Stores/Model/Todo";
 import TodoStore from "../../Stores/Model/TodoStore";
 import TodoInput from ".";
 
 describe("TodoInput Testsuit", () => {
-  let todo, todoStore, todoInputChange;
+  let todoStore, todoInputChange;
 
   beforeEach(() => {
-    todo = new Todo();
     todoStore = new TodoStore();
     todoInputChange = jest.fn();
   });
 
   it("should test TodoInputBox is rendered", () => {
     const { getByPlaceholderText } = render(
-      <Provider todo={todo} todoStore={todoStore}>
+      <Provider todoStore={todoStore}>
         <TodoInput />
       </Provider>
     );
@@ -27,7 +25,7 @@ describe("TodoInput Testsuit", () => {
 
   it("should test TodoInputBox handleKeyDown with value null&tab&emptytype characters", () => {
     const { getByPlaceholderText } = render(
-      <Provider todo={todo} todoStore={todoStore}>
+      <Provider todoStore={todoStore}>
         <TodoInput onTodoInput={todoInputChange} />
       </Provider>
     );
@@ -39,7 +37,7 @@ describe("TodoInput Testsuit", () => {
 
   it("should test entered text to pass to parent component ", () => {
     const { getByPlaceholderText } = render(
-      <Provider todo={todo} todoStore={todoStore}>
+      <Provider todoStore={todoStore}>
         <TodoInput onTodoInput={todoInputChange} />
       </Provider>
     );
@@ -51,7 +49,7 @@ describe("TodoInput Testsuit", () => {
 
   it("should test inputBox empty after entering text", () => {
     const { getByPlaceholderText } = render(
-      <Provider todo={todo} todoStore={todoStore}>
+      <Provider todoStore={todoStore}>
         <TodoInput onTodoInput={todoInputChange} />
       </Provider>
     );

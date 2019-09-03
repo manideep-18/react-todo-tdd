@@ -4,7 +4,6 @@ import { render, fireEvent } from "@testing-library/react";
 
 import Todo from "../../../Stores/Model/Todo";
 import TodoStore from "../../../Stores/Model/TodoStore";
-import TodoInput from "../../TodoInput";
 import TodoItem from ".";
 
 describe("Todoitems testsuit", () => {

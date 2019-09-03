@@ -6,7 +6,7 @@ import TodoButtonComponent from "./TodoButtonComponent";
 import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
 
-@inject("todoStore", "todo")
+@inject("todoStore")
 @observer
 class TodoApp extends Component {
   todo;
@@ -37,18 +37,6 @@ class TodoApp extends Component {
     return (
       <TodoAppBg>
         <TodoInput onTodoInput={this.handleTodoInputChange} />
-        {/* {this.state.edit ? (
-          <>
-            <TodoInput
-              edit={this.state.edit}
-              todo={this.todo}
-              onTodoInput={this.handleTodoInputChange}
-              onTodoEdit={this.handleEditChange}
-            />
-          </>
-        ) : (
-          ""
-        )} */}
         <TodoList onTodoItemEdit={this.handleTodoItemEdit} />
         <TodoButtonComponent onClearCompleted={this.handleClearCompleted} />
       </TodoAppBg>

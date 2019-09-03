@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { TodoListBg } from "./styledComponents";
 import TodoItem from "./TodoItem";
 
-@inject("todoStore", "todo")
+@inject("todoStore")
 @observer
 class TodoList extends Component {
   handleTodoEditChange = (todoEditStatus, todo) => {
