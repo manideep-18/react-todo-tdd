@@ -1,8 +1,8 @@
 import React from "react";
+import { Provider } from "mobx-react";
 import { render, fireEvent } from "@testing-library/react";
 import TodoFilters from ".";
 import TodoStore from "../../../Stores/Model/TodoStore";
-import { Provider } from "mobx-react";
 describe("TodoButton testsuit", () => {
   it("should test StyledTodoButton rendered in UI", () => {
     const todoStore = new TodoStore();

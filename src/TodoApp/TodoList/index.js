@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { TodoListBg } from "./styledComponents";
 import { inject, observer } from "mobx-react";
+import { TodoListBg } from "./styledComponents";
 import TodoItem from "./TodoItem";
 @inject("todoStore", "todo")
 @observer
 class TodoList extends Component {
-  handleTodoEditChange = (status, todo) => {
-    this.props.onTodoItemChange(status, todo);
+  handleTodoEditChange = (editTodoStatus, todo) => {
+    this.props.onTodoItemChange(editTodoStatus, todo);
   };
   handleTodoItemDelete = todo => {
     this.props.todoStore.deleteTodo(todo);
@@ -17,7 +17,7 @@ class TodoList extends Component {
       <div key={eachTodo.todoId}>
         <TodoItem
           todo={eachTodo}
-          onTodoItemChange={this.handleTodoEditChange}
+          onTodoItemEdit={this.handleTodoEditChange}
           onTodoItemDelete={this.handleTodoItemDelete}
         />
       </div>

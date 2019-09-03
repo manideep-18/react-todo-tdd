@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { inject, observer } from "mobx-react";
-import TodoFilters from "./TodoFilters";
+
 import {
   TodoButtonComponentBg,
   TodoClearCompletedButton
 } from "./styledComponents";
+import TodoFilters from "./TodoFilters";
 @inject("todoStore")
 @observer
 class TodoButtonComponent extends Component {
