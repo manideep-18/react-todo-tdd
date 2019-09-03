@@ -1,13 +1,20 @@
 import React from "react";
 import { Provider } from "mobx-react";
 import { render, fireEvent } from "@testing-library/react";
-import TodoItem from ".";
+
 import Todo from "../../../Stores/Model/Todo";
-import TodoInput from "../../TodoInput";
 import TodoStore from "../../../Stores/Model/TodoStore";
+import TodoInput from "../../TodoInput";
+import TodoItem from ".";
+
 describe("Todoitems testsuit", () => {
+  let todo;
+
+  beforeEach(() => {
+    todo = new Todo();
+  });
+
   it("sholud test text strike-off with checkbox tick", () => {
-    const todo = new Todo();
     todo.setTodoDescription("todo");
     todo.setTodoIsCompleted();
     if (todo.todoIsCompleted === true) {
@@ -16,9 +23,9 @@ describe("Todoitems testsuit", () => {
       expect(textStrikeoff).toBeDefined();
     }
   });
+
   it("should test onDoubleClick TodoItem", () => {
     const todoItemChange = jest.fn();
-    const todo = new Todo();
     const todoStore = new TodoStore();
     todo.setTodoDescription("todo");
     const { getByText } = render(
@@ -45,10 +52,10 @@ describe("Todoitems testsuit", () => {
     fireEvent.keyDown(editInput, { key: "Enter", code: 13 });
     expect(todoItemChange).toBeCalledWith("todo-edited");
   });
+
   it("should test todoDelete on closeIcon click", () => {
     const todoItemDelete = jest.fn();
     window.confirm = jest.fn(() => true);
-    const todo = new Todo();
     todo.setTodoDescription("todo");
     const { getByText } = render(
       <TodoItem todo={todo} onTodoItemDelete={todoItemDelete} />

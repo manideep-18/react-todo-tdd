@@ -1,11 +1,18 @@
 import { Provider } from "mobx-react";
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import TodoButtonComponent from ".";
+
 import TodoStore from "../../Stores/Model/TodoStore";
+import TodoButtonComponent from ".";
+
 describe("TodoButtonComponent testsuit", () => {
+  let todoStore;
+
+  beforeEach(() => {
+    todoStore = new TodoStore();
+  });
+
   it("should test ClearCompleted button rendered", () => {
-    const todoStore = new TodoStore();
     const { getByText } = render(
       <Provider todoStore={todoStore}>
         <TodoButtonComponent />
@@ -14,8 +21,8 @@ describe("TodoButtonComponent testsuit", () => {
     const ClearCompletedButton = getByText("Clear Completed");
     expect(ClearCompletedButton).toBeDefined();
   });
+
   it("should test ClearCompleted handleClick function", () => {
-    const todoStore = new TodoStore();
     const onClearCompleted = jest.fn();
     const { getByText } = render(
       <Provider todoStore={todoStore}>

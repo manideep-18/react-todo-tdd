@@ -1,5 +1,6 @@
 import { observer, inject } from "mobx-react";
 import React, { Component } from "react";
+
 import {
   TodoItemTextStrikeoff,
   TodoItemBg,
@@ -8,6 +9,7 @@ import {
   CheckBox,
   TodoEachItemBg
 } from "./styledComponents";
+
 inject("todo");
 @observer
 class TodoItem extends Component {
@@ -15,17 +17,21 @@ class TodoItem extends Component {
     super(props);
     this.state = { click: false, delete: "false" };
   }
+
   handleCheckBoxClick = () => {
     this.props.todo.setTodoIsCompleted();
     this.setState({ click: !this.state.click });
   };
+
   handleDoubleClick = () => {
     this.props.onTodoItemEdit(true, this.props.todo);
   };
+
   handleClick = () => {
     if (window.confirm("Are you sure"))
       this.props.onTodoItemDelete(this.props.todo);
   };
+
   renderActive = () => {
     return (
       <TodoEachItemBg>
@@ -43,6 +49,7 @@ class TodoItem extends Component {
       </TodoEachItemBg>
     );
   };
+
   renderCompleted = () => {
     return (
       <TodoEachItemBg>
@@ -60,6 +67,7 @@ class TodoItem extends Component {
       </TodoEachItemBg>
     );
   };
+
   displayTodo = () => {
     if (this.props.todo.todoIsCompleted) {
       return this.renderCompleted();
@@ -67,6 +75,7 @@ class TodoItem extends Component {
       return this.renderActive();
     }
   };
+
   render() {
     return <TodoItemBg>{this.displayTodo()}</TodoItemBg>;
   }

@@ -1,15 +1,17 @@
-import TodoStore from ".";
 import Todo from "../Todo";
+import TodoStore from ".";
 
 describe("TodoStore testsuit", () => {
+  let todoStore;
+  beforeEach(() => {
+    todoStore = new TodoStore();
+  });
   it("should test addTodo function", () => {
-    const todoStore = new TodoStore();
     todoStore.addTodo("todo-testing");
     expect(todoStore.todos.length).toBe(1);
     expect(todoStore.todos[0].todoDescription).toBe("todo-testing");
   });
   it("should test deleteTodo function", () => {
-    const todoStore = new TodoStore();
     const todo = new Todo();
     todoStore.addTodo("todo-testing");
     todo.setTodoDescription("todo-testing");
@@ -17,25 +19,21 @@ describe("TodoStore testsuit", () => {
     expect(todoStore.todos.length).toBe(0);
   });
   it("should test clearCompleted function", () => {
-    const todoStore = new TodoStore();
     todoStore.addTodo("todo-testing");
     todoStore.todos[0].setTodoIsCompleted();
     todoStore.clearCompleted();
     expect(todoStore.todos.length).toBe(0);
   });
   it("should test setApplyFilterType", () => {
-    const todoStore = new TodoStore();
     todoStore.setApplyFilterType("All");
     expect(todoStore.applyFilterType).toBe("All");
   });
   it("should test todosItemsLeft", () => {
-    const todoStore = new TodoStore();
     todoStore.addTodo("todo-testing");
     todoStore.todos[0].setTodoIsCompleted();
     expect(todoStore.todosItemsLeft).toBe(0);
   });
   it("should test for appliedFilterList", () => {
-    const todoStore = new TodoStore();
     todoStore.addTodo("learn-tdd");
     todoStore.addTodo("todo-testing");
     todoStore.addTodo("mobx");

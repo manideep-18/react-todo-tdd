@@ -1,5 +1,7 @@
 import { action, observable } from "mobx";
+
 var id = 0;
+
 class Todo {
   todoId = 0;
   @observable todoDescription;
