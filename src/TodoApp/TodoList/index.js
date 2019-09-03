@@ -1,5 +1,5 @@
-import React, { Component } from "react";
 import { inject, observer } from "mobx-react";
+import React, { Component } from "react";
 import { TodoListBg } from "./styledComponents";
 import TodoItem from "./TodoItem";
 @inject("todoStore", "todo")

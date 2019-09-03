@@ -1,11 +1,11 @@
 import { action, observable } from "mobx";
-var todoIdStatic = 0;
+var id = 0;
 class Todo {
   todoId = 0;
   @observable todoDescription;
   @observable todoIsCompleted;
   constructor() {
-    this.todoId = todoIdStatic++;
+    this.todoId = id++;
     this.todoDescription = "";
     this.todoIsCompleted = false;
   }

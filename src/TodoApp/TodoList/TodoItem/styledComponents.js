@@ -7,8 +7,6 @@ export const CheckBox = styled.input``;
 export const TodoItemTextStrikeoff = styled.span`
   text-decoration: line-through;
 `;
-export const TodoActiveText = styled.span`
-  text-decoration: none;
-`;
+export const TodoActiveText = styled.span``;
 export const TodoItemDeleteButton = styled.button``;
 export const TodoEachItemBg = styled.div``;

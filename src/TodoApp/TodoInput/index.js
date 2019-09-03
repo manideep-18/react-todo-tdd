@@ -1,5 +1,5 @@
-import React, { Component } from "react";
 import { inject } from "mobx-react";
+import React, { Component } from "react";
 import { TodoInputBg, TodoInputBox } from "./styledComponents";
 @inject("todoStore", "todo")
 class TodoInput extends Component {

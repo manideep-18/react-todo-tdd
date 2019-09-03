@@ -1,9 +1,9 @@
 import React from "react";
+import { Provider } from "mobx-react";
 import { render, fireEvent } from "@testing-library/react";
 import TodoItem from ".";
 import Todo from "../../../Stores/Model/Todo";
 import TodoInput from "../../TodoInput";
-import { Provider } from "mobx-react";
 import TodoStore from "../../../Stores/Model/TodoStore";
 describe("Todoitems testsuit", () => {
   it("sholud test text strike-off with checkbox tick", () => {
