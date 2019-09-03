@@ -8,12 +8,12 @@ describe("TodoModel testsuit", () => {
   });
 
   it("should test setTodoDescription ", () => {
-    todo.setTodoDescription("learn-tdd");
-    expect(todo.todoDescription).toBe("learn-tdd");
+    todo.setDescription("learn-tdd");
+    expect(todo.description).toBe("learn-tdd");
   });
 
   it("should test setTodoIscompleted", () => {
-    todo.setTodoIsCompleted();
-    expect(todo.todoIsCompleted).toBe(true);
+    todo.toggleIsCompleted();
+    expect(todo.isCompleted).toBe(true);
   });
 });

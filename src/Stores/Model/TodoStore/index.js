@@ -8,20 +8,18 @@ class TodoStore {
 
   @action addTodo = description => {
     const todo = new Todo();
-    todo.setTodoDescription(description);
+    todo.setDescription(description);
     this.todos.push(todo);
   };
 
   @action deleteTodo = todo => {
     this.todos = this.todos.filter(
-      todoEach => todoEach.todoDescription !== todo.todoDescription
+      todoEach => todoEach.description !== todo.description
     );
   };
 
   @action clearCompleted = () => {
-    this.todos = this.todos.filter(
-      todoEach => todoEach.todoIsCompleted === false
-    );
+    this.todos = this.todos.filter(todoEach => todoEach.isCompleted === false);
   };
 
   @action setApplyFilterType = filterType => {
@@ -30,7 +28,7 @@ class TodoStore {
 
   @computed get todosItemsLeft() {
     const todosItemsLeftArray = this.todos.filter(
-      todoEach => todoEach.todoIsCompleted === false
+      todoEach => todoEach.isCompleted === false
     );
     return todosItemsLeftArray.length;
   }
@@ -39,12 +37,10 @@ class TodoStore {
     var todosArray = [];
     if (this.applyFilterType === "Active") {
       todosArray = this.todos.filter(
-        todoEach => todoEach.todoIsCompleted === false
+        todoEach => todoEach.isCompleted === false
       );
     } else if (this.applyFilterType === "Completed") {
-      todosArray = this.todos.filter(
-        todoEach => todoEach.todoIsCompleted === true
-      );
+      todosArray = this.todos.filter(todoEach => todoEach.isCompleted === true);
     } else {
       todosArray = this.todos;
     }

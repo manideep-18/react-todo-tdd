@@ -19,7 +19,7 @@ class TodoItem extends Component {
   }
 
   handleCheckBoxClick = () => {
-    this.props.todo.setTodoIsCompleted();
+    this.props.todo.toggleIsCompleted();
     this.setState({ click: !this.state.click });
   };
 
@@ -38,7 +38,7 @@ class TodoItem extends Component {
   };
 
   handleClick = () => {
-    if (window.confirm("Are you sure"))
+    if (window.confirm("Are you sure you want to delete"))
       this.props.onTodoItemDelete(this.props.todo);
   };
 
@@ -55,7 +55,7 @@ class TodoItem extends Component {
               checked={this.state.click}
             />
             <TodoActiveText onDoubleClick={this.handleDoubleClick}>
-              {this.props.todo.todoDescription}
+              {this.props.todo.description}
             </TodoActiveText>
             <TodoItemDeleteButton onClick={this.handleClick}>
               delete
@@ -72,10 +72,10 @@ class TodoItem extends Component {
         <CheckBox
           type="checkbox"
           onChange={this.handleCheckBoxClick}
-          checked={this.state.click}
+          checked={true}
         />
         <TodoItemTextStrikeoff>
-          {this.props.todo.todoDescription}
+          {this.props.todo.description}
         </TodoItemTextStrikeoff>
         <TodoItemDeleteButton onClick={this.handleClick}>
           delete
@@ -85,7 +85,7 @@ class TodoItem extends Component {
   };
 
   displayTodo = () => {
-    if (this.props.todo.todoIsCompleted) {
+    if (this.props.todo.isCompleted) {
       return this.renderCompleted();
     } else {
       return this.renderActive();

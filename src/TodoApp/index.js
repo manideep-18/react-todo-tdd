@@ -37,7 +37,7 @@ class TodoApp extends Component {
     return (
       <TodoAppBg>
         <TodoInput onTodoInput={this.handleTodoInputChange} />
-        <TodoList onTodoItemEdit={this.handleTodoItemEdit} />
+        <TodoList />
         <TodoButtonComponent onClearCompleted={this.handleClearCompleted} />
       </TodoAppBg>
     );

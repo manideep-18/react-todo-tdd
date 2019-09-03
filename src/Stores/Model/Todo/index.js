@@ -1,21 +1,24 @@
 import { action, observable } from "mobx";
 
-var id = 0;
+let count = 0;
 
 class Todo {
-  todoId = 0;
-  @observable todoDescription;
-  @observable todoIsCompleted;
+  id = 0;
+  @observable description;
+  @observable isCompleted;
+
   constructor() {
-    this.todoId = id++;
-    this.todoDescription = "";
-    this.todoIsCompleted = false;
+    this.id = count++;
+    this.description = "";
+    this.isCompleted = false;
   }
-  @action setTodoDescription = description => {
-    this.todoDescription = description;
+
+  @action setDescription = description => {
+    this.description = description;
   };
-  @action setTodoIsCompleted = () => {
-    this.todoIsCompleted = !this.todoIsCompleted;
+
+  @action toggleIsCompleted = () => {
+    this.isCompleted = !this.isCompleted;
   };
 }
 export default Todo;

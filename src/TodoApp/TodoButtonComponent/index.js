@@ -20,7 +20,7 @@ class TodoButtonComponent extends Component {
         {this.props.todoStore.todosItemsLeft > 0 ? (
           <>{this.props.todoStore.todosItemsLeft} items left</>
         ) : (
-          ""
+          <>0 items left</>
         )}
         <TodoFilters todoFiltersText="All" />
         <TodoFilters todoFiltersText="Active" />

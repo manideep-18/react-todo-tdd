@@ -19,7 +19,7 @@ class TodoList extends Component {
     const todosArray = this.props.todoStore.appliedFilterList;
     const todosList = todosArray.map(eachTodo => (
       <TodoItem
-        key={eachTodo.todoId}
+        key={eachTodo.id}
         todo={eachTodo}
         onTodoItemEdit={this.handleTodoEditChange}
         onTodoItemDelete={this.handleTodoItemDelete}
