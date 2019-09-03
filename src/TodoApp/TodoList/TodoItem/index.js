@@ -9,13 +9,13 @@ import {
   CheckBox,
   TodoEachItemBg
 } from "./styledComponents";
+import TodoInput from "../../TodoInput";
 
-inject("todo");
 @observer
 class TodoItem extends Component {
   constructor(props) {
     super(props);
-    this.state = { click: false, delete: "false" };
+    this.state = { click: false, edit: false };
   }
 
   handleCheckBoxClick = () => {
@@ -24,7 +24,17 @@ class TodoItem extends Component {
   };
 
   handleDoubleClick = () => {
-    this.props.onTodoItemEdit(true, this.props.todo);
+    this.setState({ edit: !this.state.edit });
+  };
+
+  handleEdit = () => {
+    return (
+      <TodoInput
+        edit={this.state.edit}
+        todo={this.props.todo}
+        onTodoEdit={this.handleDoubleClick}
+      />
+    );
   };
 
   handleClick = () => {
@@ -35,17 +45,23 @@ class TodoItem extends Component {
   renderActive = () => {
     return (
       <TodoEachItemBg>
-        <CheckBox
-          type="checkbox"
-          onChange={this.handleCheckBoxClick}
-          checked={this.state.click}
-        />
-        <TodoActiveText onDoubleClick={this.handleDoubleClick}>
-          {this.props.todo.todoDescription}
-        </TodoActiveText>
-        <TodoItemDeleteButton onClick={this.handleClick}>
-          delete
-        </TodoItemDeleteButton>
+        {this.state.edit ? (
+          this.handleEdit()
+        ) : (
+          <>
+            <CheckBox
+              type="checkbox"
+              onChange={this.handleCheckBoxClick}
+              checked={this.state.click}
+            />
+            <TodoActiveText onDoubleClick={this.handleDoubleClick}>
+              {this.props.todo.todoDescription}
+            </TodoActiveText>
+            <TodoItemDeleteButton onClick={this.handleClick}>
+              delete
+            </TodoItemDeleteButton>
+          </>
+        )}
       </TodoEachItemBg>
     );
   };

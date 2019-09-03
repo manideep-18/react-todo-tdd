@@ -28,29 +28,17 @@ describe("Todoitems testsuit", () => {
     const todoItemChange = jest.fn();
     const todoStore = new TodoStore();
     todo.setTodoDescription("todo");
-    const { getByText } = render(
-      <TodoItem
-        todo={todo}
-        todoStore={todoStore}
-        onTodoItemEdit={todoItemChange}
-      />
+    const { getByText, getByPlaceholderText } = render(
+      <Provider todoStore={todoStore}>
+        <TodoItem todo={todo} todoStore={todoStore} />
+      </Provider>
     );
     const editedText = getByText(todo.todoDescription);
     fireEvent.doubleClick(editedText);
-    expect(todoItemChange).toBeCalledWith(true, todo);
-    const { getByPlaceholderText } = render(
-      <Provider todo={todo} todoStore={todoStore}>
-        <TodoInput
-          editTodo={true}
-          description={todo.todoDescription}
-          onTodoInput={todoItemChange}
-        />
-      </Provider>
-    );
     const editInput = getByPlaceholderText("what needs to be done...");
     fireEvent.change(editInput, { target: { value: "todo-edited" } });
     fireEvent.keyDown(editInput, { key: "Enter", code: 13 });
-    expect(todoItemChange).toBeCalledWith("todo-edited");
+    expect(todo.todoDescription).toBe("todo-edited");
   });
 
   it("should test todoDelete on closeIcon click", () => {

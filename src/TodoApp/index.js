@@ -37,7 +37,7 @@ class TodoApp extends Component {
     return (
       <TodoAppBg>
         <TodoInput onTodoInput={this.handleTodoInputChange} />
-        {this.state.edit ? (
+        {/* {this.state.edit ? (
           <>
             <TodoInput
               edit={this.state.edit}
@@ -48,7 +48,7 @@ class TodoApp extends Component {
           </>
         ) : (
           ""
-        )}
+        )} */}
         <TodoList onTodoItemEdit={this.handleTodoItemEdit} />
         <TodoButtonComponent onClearCompleted={this.handleClearCompleted} />
       </TodoAppBg>

@@ -44,6 +44,7 @@ class TodoInput extends Component {
         <TodoInputBox
           value={this.state.value}
           type="text"
+          data-testid="mani"
           placeholder="what needs to be done..."
           onChange={this.handleChange}
           onKeyDown={this.handleKeyDown}
