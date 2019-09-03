@@ -8,11 +8,9 @@ const todoStore = new TodoStore();
 class App extends React.Component {
   render() {
     return (
-      <>
-        <Provider todoStore={todoStore}>
-          <TodoApp />
-        </Provider>
-      </>
+      <Provider todoStore={todoStore}>
+        <TodoApp />
+      </Provider>
     );
   }
 }
