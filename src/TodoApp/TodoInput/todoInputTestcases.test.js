@@ -1,8 +1,8 @@
 import React from "react";
+import { Provider } from "mobx-react";
 import { render, fireEvent } from "@testing-library/react";
 import TodoInput from ".";
 import Todo from "../../Stores/Model/Todo";
-import { Provider } from "mobx-react";
 import TodoStore from "../../Stores/Model/TodoStore";
 describe("TodoInput Testsuit", () => {
   it("should test TodoInputBox is rendered", () => {
@@ -22,7 +22,7 @@ describe("TodoInput Testsuit", () => {
     const todoInputChange = jest.fn();
     const { getByPlaceholderText } = render(
       <Provider todo={todo} todoStore={todoStore}>
-        <TodoInput onTodoInputChange={todoInputChange} />
+        <TodoInput onTodoInput={todoInputChange} />
       </Provider>
     );
     const todoInput = getByPlaceholderText("what needs to be done...");
@@ -36,7 +36,7 @@ describe("TodoInput Testsuit", () => {
     const todoInputChange = jest.fn();
     const { getByPlaceholderText } = render(
       <Provider todo={todo} todoStore={todoStore}>
-        <TodoInput onTodoInputChange={todoInputChange} />
+        <TodoInput onTodoInput={todoInputChange} />
       </Provider>
     );
     const todoInput = getByPlaceholderText("what needs to be done...");
@@ -50,7 +50,7 @@ describe("TodoInput Testsuit", () => {
     const todoInputChange = jest.fn();
     const { getByPlaceholderText } = render(
       <Provider todo={todo} todoStore={todoStore}>
-        <TodoInput onTodoInputChange={todoInputChange} />
+        <TodoInput onTodoInput={todoInputChange} />
       </Provider>
     );
     const todoInput = getByPlaceholderText("what needs to be done...");
