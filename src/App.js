@@ -1,18 +1,16 @@
-import React from "react";
 import { Provider } from "mobx-react";
-import TodoApp from "./TodoApp";
-import Todo from "./Stores/Model/Todo";
+import React from "react";
+
 import TodoStore from "./Stores/Model/TodoStore";
+import TodoApp from "./TodoApp";
+
 const todoStore = new TodoStore();
-const todo = new Todo();
 class App extends React.Component {
   render() {
     return (
-      <>
-        <Provider todoStore={todoStore} todo={todo}>
-          <TodoApp />
-        </Provider>
-      </>
+      <Provider todoStore={todoStore}>
+        <TodoApp />
+      </Provider>
     );
   }
 }

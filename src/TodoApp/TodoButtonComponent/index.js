@@ -1,23 +1,26 @@
-import { inject, observer } from "mobx-react";
 import React, { Component } from "react";
-import TodoFilters from "./TodoFilters";
+import { inject, observer } from "mobx-react";
+
 import {
   TodoButtonComponentBg,
   TodoClearCompletedButton
 } from "./styledComponents";
+import TodoFilters from "./TodoFilters";
+
 @inject("todoStore")
 @observer
 class TodoButtonComponent extends Component {
   handleClick = () => {
     this.props.onClearCompleted();
   };
+
   render() {
     return (
       <TodoButtonComponentBg>
         {this.props.todoStore.todosItemsLeft > 0 ? (
           <>{this.props.todoStore.todosItemsLeft} items left</>
         ) : (
-          ""
+          <>0 items left</>
         )}
         <TodoFilters todoFiltersText="All" />
         <TodoFilters todoFiltersText="Active" />

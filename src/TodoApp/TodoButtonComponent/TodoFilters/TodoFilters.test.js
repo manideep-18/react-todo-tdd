@@ -1,8 +1,10 @@
-import React from "react";
 import { Provider } from "mobx-react";
+import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import TodoFilters from ".";
+
 import TodoStore from "../../../Stores/Model/TodoStore";
+import TodoFilters from ".";
+
 describe("TodoButton testsuit", () => {
   it("should test StyledTodoButton rendered in UI", () => {
     const todoStore = new TodoStore();
@@ -14,6 +16,7 @@ describe("TodoButton testsuit", () => {
     const todoButton = getByText("All");
     expect(todoButton).toBeDefined();
   });
+
   it("should test StyledTodoButton handleClick function ", () => {
     const todoStore = new TodoStore();
     todoStore.setApplyFilterType = jest.fn();
